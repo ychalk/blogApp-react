@@ -24,17 +24,19 @@ const BlogDetails = (blogs) => {
         <article>
           <h2>{ blog.name }</h2>
 
-          {blog.ingredients.map((ingredient, i) => <div key={i}>
-            <div>{ingredient.quantity}</div>
-            <div>{ingredient.name}</div>
+          {blog.ingredients.map((ingredient, i) => <div className="ingredientWrapper" key={i}>
+            <div className="quantity">{ingredient.quantity}</div>
+            <div className="ingredient">{ingredient.name}</div>
             </div>)}           
           
 
           <div><div>Method: </div>
             <ol> {blog.steps.map(e => <li>{e}</li>)}</ol>
           </div>
-          <img src={blog.imageURL} alt=""/>
-          <button onClick={handleClick}>delete</button>
+          <div className="imgBtn">
+            <img src={blog.imageURL} alt=""/>
+            <button onClick={handleClick}>Delete</button>
+          </div>
         </article>
       )}    
     </div>

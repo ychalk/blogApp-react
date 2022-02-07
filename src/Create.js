@@ -1,16 +1,19 @@
+import axios from "axios";
 import {useState} from "react";
 import { useNavigate } from "react-router-dom";
+// import FileUploader from "./FileUploader";
 
 const Create = () => {
 
     const [name, setName] = useState('');
     const [steps, setSteps] = useState('');
-    const [timer, setTimer] = useState('');
+    const [imageURL, setImageURL] = useState('');
+    
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const recipe = { name, steps, timer };    
+        const recipe = { name, steps, imageURL };    
         console.log(recipe);
 
         fetch('http://localhost:8000/blogs/', {
@@ -20,9 +23,11 @@ const Create = () => {
           }).then(() => {
             navigate("/", { replace: true });
         })
-      }
 
-  
+       
+
+      }
+ 
   
 
     return (
@@ -42,9 +47,17 @@ const Create = () => {
           value={steps}
           onChange={(e) => setSteps(e.target.value)}
         ></textarea>
-        <label>Timer:</label>
-       
-        <button>Add Blog</button>
+
+       {/* <input type="file" 
+         value={imageURL} 
+         onChange={(e) => setImageURL(e.target.files[0])}
+       /> */}
+
+      
+
+     
+               
+        <button>Add Recipe</button>
       </form>
       </div>
     );
